@@ -21,18 +21,21 @@ const findPeakElement = (arr) => {
   //declare a variable to hold peak elements; will return as an array?
   let peaks = [];
 
-  //for iteration through array
+  //use forEach with element and index arguments to iteration through array
   arr.forEach((el, index) => {
     //if index 0, only check index +1 spot
+    //push element if it is greater than element at index +1
     if (index === 0 && el > arr[index + 1]) peaks.push(el);
     //if index is equal to array.lenth-1, only check index-1 spot
+    //push element if it is greater than element at index -1
     else if (index === arr.length - 1 && el > arr[index - 1]) peaks.push(el);
-    //else check if element is greater than index-1 and index+1; if yes return the element value
+    //else check if element is greater than index-1 and index+1
+    //if yes, push element
     else if (el > arr[index - 1] && el > arr[index + 1]) peaks.push(el);
   });
 
-  //if the length of peaks is greater than zero, it means peak elements wer found so will return peaks array
-  // else return the first element in the original array because all elements are the same value and considered peaks per edge cases
+  //if the length of peaks is greater than zero, it means peak elements were found so return peaks array
+  // else return the first element in the original array because all elements are the same value and considered peaks per edge case in prompt
   return peaks.length > 0 ? peaks : arr[0];
 };
 

@@ -49,7 +49,7 @@ const sortTicket = (obj) => {
 
   //using a while loop, iterate until the length of the new array is equal to the length of the keys array
   while (travelOrder.length < keys.length) {
-    //push object to array (city variable = obj[city variable])
+    //push subarray to array [city variable, obj[city variable]
     travelOrder.push([city, obj[city]]);
     //reassign city variable to equal obj[city variable]
     city = obj[city];

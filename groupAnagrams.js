@@ -36,7 +36,7 @@ const groupAnagrams = function (strs) {
   //iterate through array
   strs.forEach((el) => {
     //sort characters of each element to allow for easy comparison of matching anagrams
-    let sorted = el.split("").sort().join("");
+    let sorted = el.split("").sort().join(""); //aet
     //if the cache contains the sorted anagram, then push the element to the subarray of output array with the corresponding index value from cache -1
     //else push the element as a subarray to the output array and add the sorted element as key with the value of current length of output array, which will act as the index reference
     if (cache[sorted]) {

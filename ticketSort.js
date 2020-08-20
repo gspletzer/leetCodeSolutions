@@ -31,14 +31,6 @@ const sortTicket = (obj) => {
   //isolate keys of input object into an array
   const values = Object.values(obj);
 
-  /*initially did with forEach but change to for loop for advantage of break, and possibly avoiding iterating through the entire keys array*/
-  //iterate through keys array to to see if it appears in the values array; if key is not in values it is the starting point, make it value of starting city variable
-  // keys.forEach (el => {
-  //   if (!(values.includes(el))) {
-  //     city = el;
-  //   }
-  // });
-
   //iterate through keys array to to see if it appears in the values array; if key is not in values it is the starting point, make it value of starting city variable
   for (let i = 0; i < keys.length; i++) {
     if (!values.includes(keys[i])) {

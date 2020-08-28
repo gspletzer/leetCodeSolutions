@@ -50,4 +50,15 @@ const groupAnagrams = function (strs) {
   return output;
 };
 
+/*
+const anagrams = (arr) => {
+  const cache = {};
+  arr.forEach(el => {
+    let sorted = el.split("").sort().join("");
+    !cache[sorted] ? cache[sorted] = [el] : cache[sorted].push(el)
+  })
+  return Object.values(cache)
+}
+*/
+
 console.log(groupAnagrams(Input));

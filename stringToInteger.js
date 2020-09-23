@@ -46,9 +46,52 @@ Thefore INT_MIN (−231) is returned.
  * @param {string} str
  * @return {number}
  */
+
+/* using number.isInteger in lieu of cache */
+// const myAtoi = function (str) {
+//   //trim white space from string
+//   const trimmed = str.trim();
+//   //declare output; initialize as string of zero
+//   let output = "0";
+//   //loop through the string to evaluate for negative sign/number
+//   for (let i = 0; i < trimmed.length; i++) {
+//     //add negative sign and consecutive numbers to output
+//     //break when non number is encountered
+//     if (trimmed[i] === "+" && i === 0) continue;
+//     else if (
+//       trimmed[i] === "-" &&
+//       (trimmed.length === 1 || !Number.isInteger(parseInt(trimmed[i + 1])))
+//     )
+//       break;
+//     else if (trimmed[i] === "-" && i === 0) output = trimmed[i];
+//     else if (Number.isInteger(parseInt(trimmed[i]))) output += trimmed[i];
+//     else break;
+//   }
+//   //convert output to number return and check it is with min and max limits
+//   return parseInt(output, 10) > 2147483647
+//     ? 2147483647
+//     : parseInt(output, 10) < -2147483648
+//     ? -2147483648
+//     : parseInt(output, 10);
+// };
+
+/* utilizing cache */
 const myAtoi = function (str) {
   //trim white space from string
   const trimmed = str.trim();
+  //declare a cache to store number values
+  const nums = {
+    1: true,
+    2: true,
+    3: true,
+    4: true,
+    5: true,
+    6: true,
+    7: true,
+    8: true,
+    9: true,
+    10: true,
+  };
   //declare output; initialize as string of zero
   let output = "0";
   //loop through the string to evaluate for negative sign/number
@@ -58,19 +101,19 @@ const myAtoi = function (str) {
     //else if - sign and length is 1 or the next character is not a number, break
     else if (
       trimmed[i] === "-" &&
-      (trimmed.length === 1 || !Number.isInteger(parseInt(trimmed[i + 1])))
+      (trimmed.length === 1 || !nums[trimmed[i + 1]])
     )
       break;
     //else if - sign is first character, add to output string
     else if (trimmed[i] === "-" && i === 0) output = trimmed[i];
     //else if character is a number, add to output string
-    else if (Number.isInteger(parseInt(trimmed[i]))) output += trimmed[i];
+    else if (nums[trimmed[i]]) output += trimmed[i];
     //else if any other characters other than number, break
     else break;
   }
   //convert output to number and check it is with min and max limits, return accordingly
-  return parseInt(output, 10) > 2147483648
-    ? 2147483648
+  return parseInt(output, 10) > 2147483647
+    ? 2147483647
     : parseInt(output, 10) < -2147483648
     ? -2147483648
     : parseInt(output, 10);

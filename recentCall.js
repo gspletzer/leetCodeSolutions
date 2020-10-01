@@ -66,22 +66,28 @@ RecentCounter.prototype.ping2 = function (t) {
 };
 
 /* LEET CODE SOLUTION */
-// class RecentCounter{
+/*avoids setting a counter variable/resetting 
+since queue will always include the pings that applied to output
+and carry those into next round of ping*/
 
-//   constructor(){
-//       this.queue = []
-//   }
-
-//   ping(t){
-//       this.queue.push(t)
-
-//       while(this.queue[0] < t - 3000){
-//           this.queue.shift()
-//       }
-
-//       return this.queue.length
-//   }
-// }
+class RecentCounter2 {
+  //define recent counter constructor with queue
+  constructor() {
+    this.queue = [];
+  }
+  //define ping method; accepts number (t)
+  ping(t) {
+    //push t to the queue
+    this.queue.push(t);
+    //while the queue at zero position is less than range minimum
+    //shift the first element from the queue
+    while (this.queue[0] < t - 3000) {
+      this.queue.shift();
+    }
+    //return the length of queue once while loop finishes running
+    return this.queue.length;
+  }
+}
 
 /**
  * Your RecentCounter object will be instantiated and called as such:

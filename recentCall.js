@@ -39,13 +39,11 @@ var RecentCounter = function () {
 RecentCounter.prototype.ping = function (t) {
   this.count = 0;
   this.request.push(t);
-  console.log(this.request);
   const rangeMin = Math.min(t - 3000, t);
   const rangeMax = Math.max(t - 3000, t);
   this.request.forEach((el) => {
     if (el >= rangeMin && el <= rangeMax) this.count += 1;
   });
-  console.log(this.count);
   return this.count;
 };
 

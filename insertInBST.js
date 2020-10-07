@@ -31,8 +31,9 @@ It's guaranteed that val does not exist in the original BST.
  *     this.right = (right===undefined ? null : right)
  * }
 */
-/* This problem assumes the provided root array is already in a BST format, and you are simpy adding the value to it;
+/* This problem assumes the provided root array is already in a BST format, and you are simply adding the value to it;
  and returning root, will automatically return the new array as logic is written on leet code for that*/
+
 const insertIntoBST = (root, val) => {
   //base case: when root is undefined, add a new node
   if (!root) {

@@ -69,6 +69,9 @@ var buddyStrings = function(A, B) {
   return copy === B
 };
 
+//change charCount to boolean; initialize as false, change to true when a character is already found in cache
+//after first for loop, check if pointer1 is undefined, if yes, return answer of duplicate...otherwise proceed to copy
+
 console.log(buddyStrings('ab', 'ba'));//expect true
 console.log(buddyStrings('abcd', 'abcd'));// expect false
 console.log(buddyStrings('', 'ab')); //expect false

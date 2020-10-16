@@ -9,40 +9,28 @@ heights = [0,8,0,0,5,0,0,10,0,0,1,1,0,3]
 output: 48
  */
 
-const waterArea = (heights) => {
-  //use left and right index pointers to solve for area as you move left and right. stops when pointers are same index
-  //hold last left and right integer, with indices
-  //initialize area as zero
-  let lIndex = 0;
-  let rIndex = heights.length-1;
-  let lMax = [0, 0];
-  let rMax = [0, 0];
+const waterAreaII = (pillars) => {
+  const leftDif = [];
+  const rightDif = [];
   let area = 0;
+  //iterate through pillars array to find max values in one direction;
+  pillars.forEach((el, i) => {
+    if (leftDif.length === 0) leftDif.push(el);
+    else if (el > leftDif[i-1]) leftDif.push(el);
+    else leftDif.push(leftDif[i-1])
+  });
+  //iterate backwards through pillars array to find maxium values in that direction
+  for (let i = pillars.length-1; i >= 0; i--) {
+    if(rightDif.length === 0) rightDif.push(pillars[i]);
+    else if (pillars[i] > rightDif[0]) rightDif.unshift(pillars[i]);
+    else rightDif.unshift(rightDif[0]);
+  };
+  //then iterate through pillars array and add min from left vs right - the pillar value to area
+  for (let i = 0; i < pillars.length; i++) {
+    area += (Math.min(leftDif[i], rightDif[i]) - pillars[i])
+  };
+  //return the water area
+  return area
+};
 
-  //move pointers until both have integer greater than zero. calculate the area based on difference of index and smaller value
-  //once area has value, move whichever is smaller in the appropriate direction. 
-  //if a non zero integer is encountered, that is smaller than current pointer value, subtract that from the area.
-  //if the non zero integer is greater than previous value, find difference between current last value  and smaller of (other last value, current value)
-    // multiply that number by the difference in indices between current location and other last value then reset last value to current value
-  while(lIndex !== rIndex) {
-    if (heights[lIndex] > 0 && heights[lIndex] > lMax[0]) {
-      lMax = [heights[lIndex], lIndex]
-    };
-    if (heights[rIndex] > 0 && heights[rIndex] > rMax[0]) {
-      rMax = [heights[rMax], rIndex] 
-    };
-    if (lMax[0] > 0 && rMax[0] > 0) {
-      let newArea = 0;
-      if (lMax[0] > rMax[0]) {
-        newArea = ((rMax[1]-lMax[1]) * rMax[0];
-        
-      } else {
-        newArea = (rMax[1]-lMax[1]) * lMax[0]
-      }
-    };
-    if (heights[lIndex] > 0 && heights[lIndex] < lMax[0]) {
-
-    }
-  }
-  //return the area
-}
+console.log(waterAreaII([0,8,0,0,5,0,0,10,0,0,1,1,0,3]));//expect 48

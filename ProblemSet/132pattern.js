@@ -58,8 +58,13 @@ const one32Pattern = (nums) => {
   return answer;
 };
 
-console.log(one32Pattern([3,1,4,2]));//expect true
-console.log(one32Pattern([1,2,3,4]));//expect false
-console.log(one32Pattern([-2,1,2,-2,1,2]));//expect true
-console.log(one32Pattern([1,2,3,4,-4,-3,-5,-1]));//expect false
+/* attempt for O(n) */
+const oNE32pattern = (nums) => {
+
+}
+
+// console.log(one32Pattern([3,1,4,2]));//expect true
+// console.log(one32Pattern([1,2,3,4]));//expect false
+// console.log(one32Pattern([-2,1,2,-2,1,2]));//expect true
+// console.log(one32Pattern([1,2,3,4,-4,-3,-5,-1]));//expect false
 

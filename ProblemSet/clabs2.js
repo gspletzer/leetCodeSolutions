@@ -35,29 +35,3 @@ const balanced = (string) => {
   return stack.length === 0
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

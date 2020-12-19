@@ -3,6 +3,7 @@ create a function for finding an item in a list of menus.
 Input: string, array of objects
 Output: null or menu item object 
 
+Breakdown of classes:
 Class Menus {
   name: string
   groups: array of objects
@@ -10,8 +11,8 @@ Class Menus {
 
 Class Menu Groups {
   name: string
-  groups: array of Menu Group objects
-  items: array of Menu Item objects
+  groups: array of Menu Group objects (not required)
+  items: array of Menu Item objects (not required)
 }
 
 Class Menu Item {
@@ -108,7 +109,7 @@ const findItem = (name, menus) => {
       //call function with menu parameter updated to the appropriate array
       //return the result of that only if isn't null
   for (let i = 0; i < menus.length; i++) {
-    if (menus[i].name === name) return menus[i];
+    if (menus[i].name === name) return menus[i].name;
     if (menus[i].hasOwnProperty("groups") && Array.isArray(menus[i].groups)) {
       const result = findItem(name, menus[i].groups);
       if (result !== null) return result

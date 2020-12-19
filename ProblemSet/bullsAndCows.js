@@ -45,6 +45,10 @@ secret and guess consist of digits only.
 */
 
 const bullsAndCows = (secret, guess) => {
+  //if secret matches guess, return answer with #A = secret.length
+  if (secret === guess) {
+    return `${secret.length}A0B`
+  };
   //convert guess to array to change elements that are bulls
   const guessArr = guess.split('');
   //declare a cache
@@ -70,36 +74,30 @@ const bullsAndCows = (secret, guess) => {
       cache[secret[i]] = 1;
     }
   };
-  console.log(cache);
-  console.log(guessArr)
-  //if the cache is empty after first iteration 
-  //it means there are no cows, so return answer
-  if (cache === {}) {
-    return `${bulls}A${cows}B`
-  }
   //iterate through guess 
     //if the element is in the cache
       //add one to cow count
       //if value is 1, delete key/value pair from cache
       //else subtract one from the value
   for (let i = 0; i < guessArr.length; i++) {
-    if (cache.hasOwnProperty(guessArr[i]) && cache[guessArr[i]] === 1) {
+    if (cache.hasOwnProperty(guessArr[i])) {
+      if(cache[guessArr[i]]===1) {
       cows += 1; 
       delete cache[guessArr[i]]
-    }
-    else if (cache.hasOwnProperty[guessArr[i]]) {
+      }
+      else {
       cows += 1; 
       cache[guessArr[i]] -= 1
+      }
     }
   };
-  console.log(cache)
   //return the final tally as [bullcount]A[cowcount]B
   return `${bulls}A${cows}B`
 };
 
-// console.log(bullsAndCows("1807", "7810")); //expect 1A3B
-// console.log(bullsAndCows("1123", "0111")); //expect 1A1B
-// console.log(bullsAndCows("1", "0")); //expect 0A0B
-// console.log(bullsAndCows("1", "1")); //expect 1A0B
-// console.log(bullsAndCows("11", "10")); //expect 1A0B
+console.log(bullsAndCows("1807", "7810")); //expect 1A3B
+console.log(bullsAndCows("1123", "0111")); //expect 1A1B
+console.log(bullsAndCows("1", "0")); //expect 0A0B
+console.log(bullsAndCows("1", "1")); //expect 1A0B
+console.log(bullsAndCows("11", "10")); //expect 1A0B
 console.log(bullsAndCows("1122", "2211")); //expect 0A4B

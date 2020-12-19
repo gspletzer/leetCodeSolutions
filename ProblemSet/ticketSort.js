@@ -1,5 +1,5 @@
 /*
-Input: one object that contains key/value pairs that represent plane tickets, where the key is he starting point and value is the destination.
+Input: one object that contains key/value pairs that represent plane tickets, where the key is the starting point and value is the destination.
 -One key will never be a value and will be the ultimate starting point
 -One value will never be a key and is the final destination
 -Assume each city will only appear as a key and a value once 
@@ -37,9 +37,9 @@ const sortTicket = (obj) => {
   //using a while loop, iterate until the length of the new array is equal to the length of the keys array
   while (travelOrder.length < keys.length) {
     //push subarray to array [city variable, obj[city variable]
-    travelOrder.push([city, obj[city]]);//[new york, charlotte]
+    travelOrder.push([city, obj[city]]);
     //reassign city variable to equal obj[city variable]
-    city = obj[city];//charlotte
+    city = obj[city];
   }
   //return the new array of objects in the correct travel order
   return travelOrder;

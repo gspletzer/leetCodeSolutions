@@ -50,7 +50,8 @@ const groupAnagrams = function (strs) {
   return output;
 };
 
-/*
+
+/* Cleaner solution */
 const anagrams = (arr) => {
   const cache = {};
   arr.forEach(el => {
@@ -59,6 +60,7 @@ const anagrams = (arr) => {
   })
   return Object.values(cache)
 }
-*/
+
 
 console.log(groupAnagrams(Input));
+console.log(anagrams(Input))
